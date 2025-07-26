@@ -76,7 +76,6 @@ i32 main(i32 argc, char **argv)
     printf("%lld\n", array.count);
     printf("%lld\n", array.capacity);
 
-    
     MapStrI32 map = {0};
     mapReserve(&map, 2);
     printf("%lld\n", map.count);
@@ -143,7 +142,7 @@ i32 main(i32 argc, char **argv)
     printf("%lld\n", map.maxSize);
     printf("%lld\n", map.capacity);
 
-
+    */
     const int screenWidth = 800;
     const int screenHeight = 450;
 
@@ -175,6 +174,5 @@ i32 main(i32 argc, char **argv)
     // De-Initialization
     //--------------------------------------------------------------------------------------
     CloseWindow(); 
-    */
 }
 
