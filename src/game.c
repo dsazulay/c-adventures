@@ -20,8 +20,6 @@ void gameInitWindow()
 
 bool gameUpdate()
 {
-
-    printf("diego\n");
                       /*
     rl.BeginDrawing()
     defer rl.EndDrawing()

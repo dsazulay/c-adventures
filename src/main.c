@@ -269,7 +269,6 @@ i32 main(i32 argc, char **argv)
     i32 gameAPIVersion = 0;
 
     GameAPI gameAPI = loadGameAPI(gameAPIVersion);
-
     if (gameAPI.lib == NULL)
     {
         printf("Failed to load Game API\n");
