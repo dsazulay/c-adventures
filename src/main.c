@@ -1,8 +1,8 @@
-#include "base_core.h"
-#include "base_string.h"
-#include "base_arena.h"
-#include "base_dynarray.h"
-#include "base_map.h"
+#include "base/base_core.h"
+#include "base/base_string.h"
+#include "base/base_arena.h"
+#include "base/base_dynarray.h"
+#include "base/base_map.h"
 
 #include <raylib.h>
 #include <stdio.h>
