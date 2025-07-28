@@ -17,27 +17,6 @@ void printMapElement(KVStrI32 *e)
 /*
 i32 main(i32 argc, char **argv)
 {
-    Arena arena = {0};
-
-    arenaReserve(&arena, 128);
-    printf("%lld\n", arena.used);
-    printf("%lld\n", arena.reserved);
-
-    i32 *a = arenaPush(&arena, sizeof(i32));
-    *a = 10;
-    printf("%d\n", *a);
-    printf("%lld\n", arena.used);
-
-    f64 *b = arenaPush(&arena, sizeof(f64));
-    printf("%f\n", *b);
-    *b = 23.4f;
-    printf("%f\n", *b);
-    printf("%lld\n", arena.used);
-
-    arenaPop(&arena, 8);
-    printf("%lld\n", arena.used);
-
-    arenaRelease(&arena);
 
     ArrayF32 array = {0};
     dynArrayReserve(&array, 2);
