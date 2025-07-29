@@ -1,7 +1,5 @@
 #include "base/base_core.h"
 #include "base/base_string.h"
-#include "base/base_arena.h"
-#include "base/base_dynarray.h"
 #include "base/base_map.h"
 
 #include <raylib.h>
@@ -17,112 +15,6 @@ void printMapElement(KVStrI32 *e)
 /*
 i32 main(i32 argc, char **argv)
 {
-
-    ArrayF32 array = {0};
-    dynArrayReserve(&array, 2);
-    printf("%lld\n", array.count);
-    printf("%lld\n", array.capacity);
-
-    dynArrayPush(&array, 23.f);
-    printf("%lld\n", array.count);
-    printf("%lld\n", array.capacity);
-
-
-    dynArrayPush(&array, 25.f);
-    printf("%lld\n", array.count);
-    printf("%lld\n", array.capacity);
-
-    dynArrayPush(&array, 27.f);
-    printf("%lld\n", array.count);
-    printf("%lld\n", array.capacity);
-
-    for (i64 i = 0; i < array.count; ++i)
-    {
-        printf("%f ", array.data[i]);
-    }
-    printf("\n");
-
-    f32 test = dynArrayPop(&array);
-    printf("%.2f\n", test);
-    printf("%lld\n", array.count);
-    printf("%lld\n", array.capacity);
-
-    for (i64 i = 0; i < array.count; ++i)
-    {
-        printf("%f ", array.data[i]);
-    }
-    printf("\n");
-
-    dynArrayRelease(&array);
-    printf("%lld\n", array.count);
-    printf("%lld\n", array.capacity);
-
-    MapStrI32 map = {0};
-    mapReserve(&map, 2);
-    printf("%lld\n", map.count);
-    printf("%lld\n", map.maxSize);
-    printf("%lld\n", map.capacity);
-
-    mapInsert(&map, S("Diego"), 10);
-    mapIterate(&map, printMapElement);
-    printf("\n");
-    mapInsert(&map, S("Azul"), 20);
-    mapIterate(&map, printMapElement);
-    printf("%lld %lld %lld", map.count, map.maxSize, map.capacity);
-    printf("\n");
-    mapInsert(&map, S("Bzul"), 20);
-    mapIterate(&map, printMapElement);
-    printf("\n");
-    mapInsert(&map, S("Taiane"), 8);
-    mapIterate(&map, printMapElement);
-    printf("\n");
-    printf("Another test\n\n");
-    KVStrI32 *ptr = mapFind(&map, S("Diego"));
-    if (ptr != NULL)
-    {
-        printf("found %s: %d\n", ptr->key.data, ptr->value);
-        ptr->value = 100;
-    }
-
-    for (i64 i = 0; i < map.capacity; ++i)
-    {
-    }
-
-    ptr = mapErase(&map, S("Azul"));
-    if (ptr == NULL)
-    {
-        printf("Last element\n");
-    }
-    else
-    {
-        printf("Next element: %s - %d\n", ptr->key.data, ptr->value);
-    }
-
-    mapIterate(&map, printMapElement);
-
-    ptr = mapErase(&map, S("Diego"));
-    if (ptr == NULL)
-    {
-        printf("Last element\n");
-    }
-    else
-    {
-        printf("Next element: %s - %d\n", ptr->key.data, ptr->value);
-    }
-
-    ptr = mapFind(&map, S("Test"));
-    if (ptr == NULL)
-    {
-        printf("not found %s\n", "Test");
-    }
-
-    mapIterate(&map, printMapElement);
-
-    mapRelease(&map);
-    printf("%lld\n", map.count);
-    printf("%lld\n", map.maxSize);
-    printf("%lld\n", map.capacity);
-
     const int screenWidth = 800;
     const int screenHeight = 450;
 
