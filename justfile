@@ -20,5 +20,6 @@ test file:
     clang {{sources}} {{file}} {{compile_includes}} {{compile_link_paths}} {{compile_libs}} -o build/test
     ./build/test
 
+[working-directory: 'build']
 run: build
-    ./build/main
+    ./main

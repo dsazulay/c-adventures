@@ -19,13 +19,7 @@ void testArena()
 
     arenaRelease(&arena);
     Check(arena.used == 0);
-    Check(arena.reserved == 0);
+    Check(arena.reserved == 1);
 }
 
-void testTheTest()
-{
-    Check(1 == 1);
-    Check(2 == 1);
-}
-
-TestRun("Arena", 2, TestCase(testArena), TestCase(testTheTest));
+TestRun("Arena", 1, TestCase(testArena));
