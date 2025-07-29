@@ -20,6 +20,14 @@ test file:
     clang {{sources}} {{file}} {{compile_includes}} {{compile_link_paths}} {{compile_libs}} -o build/test
     ./build/test
 
+test_all:
+    for test_file in `ls tests`; do \
+        file_path="tests/${test_file}"; \
+        clang {{sources}} $file_path {{compile_includes}} {{compile_link_paths}} {{compile_libs}} -o build/test; \
+        ./build/test; \
+    done
+
+
 [working-directory: 'build']
 run: build
     ./main
