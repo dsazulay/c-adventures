@@ -1,8 +1,8 @@
 #include "base/base_core.h"
 #include "base/base_string.h"
 #include "base/base_map.h"
+#include "base/base_log.h"
 
-#include <raylib.h>
 #include <stdio.h>
 #include <dlfcn.h>
 #include <stdlib.h>
@@ -12,44 +12,7 @@ void printMapElement(KVStrI32 *e)
 {
     printf("%s: %d\n", e->key.data, e->value);
 }
-/*
-i32 main(i32 argc, char **argv)
-{
-    const int screenWidth = 800;
-    const int screenHeight = 450;
 
-    InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
-
-    SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
-    //--------------------------------------------------------------------------------------
-
-    // Main game loop
-    while (!WindowShouldClose())    // Detect window close button or ESC key
-    {
-        // Update
-        //----------------------------------------------------------------------------------
-        // TODO: Update your variables here
-        //----------------------------------------------------------------------------------
-
-        // Draw
-        //----------------------------------------------------------------------------------
-        BeginDrawing();
-
-            ClearBackground(RAYWHITE);
-
-            DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
-
-        EndDrawing();
-        //----------------------------------------------------------------------------------
-    }
-
-    // De-Initialization
-    //--------------------------------------------------------------------------------------
-    CloseWindow(); 
-
-
-}
-*/
 typedef struct {
     void(*init)();
     void(*initWindow)();
@@ -76,7 +39,7 @@ GameAPI loadGameAPI(i32 apiVersion)
 
     char dllName[20];
     snprintf(dllName, 20, "game_%d.dll", apiVersion);
-    printf("%s\n", dllName);
+    printfln(dllName);
 
     char copyCmd[30];
     snprintf(copyCmd, 30, "cp game.dll %s", dllName);

@@ -54,6 +54,8 @@ void clearTextColor();
 
 #define print(x) printf(_printfDecodeFormat(x), x)
 
-#define println(...) _getFuncName(_0 __VA_OPT__(,) __VA_ARGS__, _println, _println_noarg)(__VA_ARGS__)
+#define println(...) _getFuncName(_0 __VA_OPT__(,) __VA_ARGS__,   \
+                                  _println,                       \
+                                  _println_noarg)(__VA_ARGS__)
 
 #endif
