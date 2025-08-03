@@ -1,5 +1,5 @@
 #include "base_tester.h"
-#include "base_log.h"
+#include "base_io.h"
 #include <stdio.h>
 #include <stdarg.h>
 

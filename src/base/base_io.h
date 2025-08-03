@@ -1,5 +1,5 @@
-#ifndef BASE_LOG_H
-#define BASE_LOG_H
+#ifndef BASE_IO_H
+#define BASE_IO_H
 
 #include <stdio.h>
 

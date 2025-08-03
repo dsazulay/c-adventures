@@ -1,7 +1,7 @@
 #include "base/base_core.h"
 #include "base/base_string.h"
 #include "base/base_map.h"
-#include "base/base_log.h"
+#include "base/base_io.h"
 
 #include <stdio.h>
 #include <dlfcn.h>
