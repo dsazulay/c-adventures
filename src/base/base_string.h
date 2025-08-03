@@ -13,7 +13,6 @@ String S(const char *str);
 String strFrom(String str, u32 from);
 String strFromTo(String str, u32 from, u32 to);
 String strFromWithSize(String str, u32 from, u32 size);
-
-void print(String str);
+void strRelease(String str);
 
 #endif

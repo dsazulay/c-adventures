@@ -1,5 +1,6 @@
 #include "base/base_tester.h"
 #include "base/base_arena.h"
+#include "base/base_io.h"
 
 void testArena()
 {

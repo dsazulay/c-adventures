@@ -30,5 +30,5 @@ test_all:
 
 
 [working-directory: 'build']
-run: build
+run: build build_dll
     ./main

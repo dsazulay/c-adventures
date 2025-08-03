@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 #include <stdarg.h>
+#include <stdlib.h>
 
 void printfln(const char * format, ...)
 {
@@ -11,42 +12,81 @@ void printfln(const char * format, ...)
     vprintf(format, argptr);
     va_end(argptr);
 
-    printf("\n");
+    println();
 }
 
-void printfColor(terminalColor color, const char * format, ...)
+void printfColor(TerminalColor color, const char * format, ...)
 {
     va_list argptr;
 
-    printf("%s", color);
+    print(color);
 
     va_start(argptr, format);
     vprintf(format, argptr);
     va_end(argptr);
 
-    printf("%s", COLOR_NONE);
+    print(COLOR_NONE);
 }
 
-void printflnColor(terminalColor color, const char * format, ...)
+void printflnColor(TerminalColor color, const char * format, ...)
 {
     va_list argptr;
 
-    printf("%s", color);
+    print(color);
 
     va_start(argptr, format);
     vprintf(format, argptr);
     va_end(argptr);
 
-    printf("\n");
-    printf("%s", COLOR_NONE);
+    println();
+    print(COLOR_NONE);
 }
 
-void setTextColor(terminalColor color)
+void printStr(String str)
 {
-    printf("%s", color);
+    for (i32 i = 0; i < str.length; ++i)
+    {
+        print(str.data[i]);
+    }
+}
+
+void printlnStr(String str)
+{
+    printStr(str);
+    println();
+}
+
+void setTextColor(TerminalColor color)
+{
+    print(color);
 }
 
 void clearColor()
 {
-    printf("%s", COLOR_NONE);
+    print(COLOR_NONE);
 }
+
+String readFile(const char *fileName)
+{
+    String result = {0};
+
+    FILE *file = fopen(fileName, "r");
+
+    if (file)
+    {
+        fseek(file, 0, SEEK_END);
+        size_t fileSize = ftell(file);
+        fseek(file, 0, SEEK_SET);
+
+        result.data = malloc(fileSize + 1);
+        result.length = fileSize;
+
+        fread(result.data, fileSize, 1, file);
+        result.data[fileSize] = '\0';
+
+        fclose(file);
+    }
+
+    return result;
+}
+

@@ -2,7 +2,7 @@
 #include "base_string.h"
 
 #include <assert.h>
-#include <stdio.h>
+#include <stdlib.h>
 
 String S(const char *str)
 {
@@ -53,11 +53,8 @@ String strFromWithSize(String str, u32 from, u32 size)
     return s;
 }
 
-void print(String str)
+void strRelease(String str)
 {
-    for (i32 i = 0; i < str.length; ++i)
-    {
-        printf("%c", str.data[i]);
-    }
-    printf("\n");
+    free(str.data);
+    str.length = 0;
 }

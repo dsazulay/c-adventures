@@ -1,6 +1,7 @@
 #ifndef BASE_IO_H
 #define BASE_IO_H
 
+#include "base_string.h"
 #include <stdio.h>
 
 #define COLOR_DEFAULT "\033[39m"
@@ -21,13 +22,17 @@
 #define COLOR_WHITE "\033[97m"
 #define COLOR_NONE "\033[0m"
 
-typedef const char *terminalColor;
+typedef const char *TerminalColor;
 
 void printfln(const char *format, ...);
-void printfColor(terminalColor color, const char *format, ...);
-void printflnColor(terminalColor color, const char *format, ...);
-void setTextColor(terminalColor color);
+void printfColor(TerminalColor color, const char *format, ...);
+void printflnColor(TerminalColor color, const char *format, ...);
+void printStr(String str);
+void printlnStr(String str);
+void setTextColor(TerminalColor color);
 void clearTextColor();
+
+String readFile(const char *fileName);
 
 #define _printfDecodeFormat(x) _Generic((x),    \
     char: "%c",                                 \
@@ -53,7 +58,6 @@ void clearTextColor();
 #define _println(x) printf(_printfDecodeFormat(x), x); _println_noarg()
 
 #define print(x) printf(_printfDecodeFormat(x), x)
-
 #define println(...) _getFuncName(_0 __VA_OPT__(,) __VA_ARGS__,   \
                                   _println,                       \
                                   _println_noarg)(__VA_ARGS__)
