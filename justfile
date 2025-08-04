@@ -3,7 +3,7 @@ compile_link_paths := "-L/opt/homebrew/Cellar/raylib/5.5/lib"
 compile_libs := "-lraylib"
 std_version := '-std=c23'
 
-sources := "src/base/*.c"
+sources := "src/base/*.c src/meta/*.c"
 test_sources := "tests/*.c"
 
 build:
@@ -16,6 +16,12 @@ generate_cc:
     clang {{sources}} {{test_sources}} src/main.c {{std_version}} -fsyntax-only {{compile_includes}} -MJ build/tmp.json
     sed -e '1s/^/[\n/' -e '$s/,$/\n]/' build/tmp.json > build/compile_commands.json
     rm build/tmp.json
+
+generate_meta:
+    clang {{sources}} src/meta_main.c {{std_version}} {{compile_includes}} {{compile_link_paths}} {{compile_libs}} -o build/meta_main
+    ./build/meta_main > src/meta_generated.h
+    rm build/meta_main
+
 
 test file:
     clang {{sources}} {{file}} {{std_version}} {{compile_includes}} {{compile_link_paths}} {{compile_libs}} -o build/test

@@ -19,4 +19,6 @@ typedef int16_t  b16;
 typedef int32_t  b32;
 typedef int64_t  b64;
 
+#define arrayCount(x) (sizeof(x) / sizeof(x[0]))
+
 #endif

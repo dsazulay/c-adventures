@@ -3,6 +3,7 @@
 
 #include <assert.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 String S(const char *str)
 {
@@ -57,4 +58,15 @@ void strRelease(String str)
 {
     free(str.data);
     str.length = 0;
+}
+
+b8 strCompare(String a, String b)
+{
+    if (a.length != b.length) { return false; }
+    for (i32 i = 0; i < a.length; ++i)
+    {
+        if (a.data[i] != b.data[i]) { return false; }
+    }
+
+    return true;
 }

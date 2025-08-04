@@ -24,6 +24,13 @@ void testDynArray()
     dynArrayRelease(&array);
     Check(array.count == 0);
     Check(array.capacity == 0);
+
+    ArrayString stringArray = {0};
+    dynArrayReserve(&stringArray, 2);
+    Check(stringArray.capacity == 2);
+
+    dynArrayPush(&stringArray, S("Name"));
+    Check(stringArray.count == 1);
 }
 
 TestRun("DynArray", 1, TestCase(testDynArray))

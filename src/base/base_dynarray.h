@@ -2,11 +2,11 @@
 #define BASE_DYNARRAY_H
 
 #include "base_core.h"
+#include "base_string.h"
 #include <stdlib.h>
 
 #define _ArrayHeader_ struct { u64 count; u64 capacity; }
 
-//#define DYNARRAY_IMPLEMENTATION
 #ifdef DYNARRAY_IMPLEMENTATION
 #define _defineArray(TName, T)                                  \
     typedef struct {                                            \
@@ -70,22 +70,27 @@
 
 _defineArray(ArrayF32, f32);
 _defineArray(ArrayI32, i32);
+_defineArray(ArrayString, String);
 
 #define dynArrayReserve(array, cap) _Generic((array),           \
         ArrayF32 *: _dynArrayReserve_ArrayF32,                  \
-        ArrayI32 *: _dynArrayReserve_ArrayI32                   \
+        ArrayI32 *: _dynArrayReserve_ArrayI32,                  \
+        ArrayString *: _dynArrayReserve_ArrayString             \
     )(array, cap)
 #define dynArrayRelease(array) _Generic((array),                \
         ArrayF32 *: _dynArrayRelease_ArrayF32,                  \
-        ArrayI32 *: _dynArrayRelease_ArrayI32                   \
+        ArrayI32 *: _dynArrayRelease_ArrayI32,                  \
+        ArrayString *: _dynArrayRelease_ArrayString             \
     )(array)
 #define dynArrayPush(array, value) _Generic((array),            \
         ArrayF32 *: _dynArrayPush_ArrayF32,                     \
-        ArrayI32 *: _dynArrayPush_ArrayI32                      \
+        ArrayI32 *: _dynArrayPush_ArrayI32,                     \
+        ArrayString *: _dynArrayPush_ArrayString                \
     )(array, value)
 #define dynArrayPop(array) _Generic((array),                    \
         ArrayF32 *: _dynArrayPop_ArrayF32,                      \
-        ArrayI32 *: _dynArrayPop_ArrayI32                       \
+        ArrayI32 *: _dynArrayPop_ArrayI32,                      \
+        ArrayString *: _dynArrayPop_ArrayString                 \
     )(array)
 
 
