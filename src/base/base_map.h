@@ -9,7 +9,9 @@
 
 #define _MapHeader_ struct { u64 count; u64 maxSize; u64 capacity; }
 
-#define mapHash(key) key.length
+u64 _mapHashStr(String key);
+
+#define mapHash(key) _mapHashStr(key);
 
 #ifdef MAP_IMPLEMENTATION
 #define _defineMap(TName, K, V)                                         \
@@ -94,7 +96,7 @@
             _mapResize_Map##TName(map);                                 \
         }                                                               \
                                                                         \
-        i64 hash = mapHash(k);                                          \
+        u64 hash = mapHash(k);                                          \
         i64 index = hash % map->capacity;                               \
         K newKey = k;                                                   \
         V newValue = v;                                                 \
@@ -122,7 +124,7 @@
                                                                         \
     i64 _mapFindIndex_Map##TName(Map##TName *map, K k)                  \
     {                                                                   \
-        i64 hash = mapHash(k);                                          \
+        u64 hash = mapHash(k);                                          \
         i64 index = hash % map->capacity;                               \
         i64 newPsl = 0;                                                 \
         while (k.data != map->content[index].key.data)                  \

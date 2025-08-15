@@ -29,7 +29,7 @@ void testMap()
     Check(ptr->value == 10);
 
     ptr = mapErase(&map, S("Azul"));
-    Check(ptr->value == 30);
+    Check(ptr->value == 10);
 
     ptr = mapErase(&map, S("Diego"));
     Check(ptr->value == 40);
